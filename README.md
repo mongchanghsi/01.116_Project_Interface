@@ -10,7 +10,8 @@ Our solution is a Text Detection solution which allows nurses who are handling t
 
 ### Set Up
 
-1. Navigate to `backend`, you will need to create a `credentials.json` which contains the credentials for Google Sheets
+1. Navigate to `frontend`, you will need to run `cp .env.template .env` and key in the required information in the `.env` file
+2. Navigate to `backend`, you will need to create a `credentials.json` which contains the credentials for Google Sheets
 
 ### How to start
 

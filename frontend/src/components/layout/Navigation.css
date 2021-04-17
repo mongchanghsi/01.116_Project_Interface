@@ -1,0 +1,14 @@
+.logo {
+  width: 7vw;
+  margin: 1vw;
+}
+
+.link-revamp {
+  color: rgba(0, 0, 0, 0.5);
+  margin-right: 5vw;
+}
+
+.link-revamp:hover {
+  color: rgba(0, 0, 0);
+  text-decoration: none;
+}

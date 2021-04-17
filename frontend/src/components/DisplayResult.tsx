@@ -1,5 +1,6 @@
 import React from 'react';
-import LoadingGIF from '../assets/loading.gif';
+import LoadingGIF from '../assets/gif/loading.gif';
+import { Card } from 'react-bootstrap';
 
 interface IProps {
   children?: React.ReactNode;
@@ -10,24 +11,47 @@ interface IProps {
 
 const DisplayResult: React.FC<IProps> = ({ result, loading, error }) => {
   return (
-    <>
-      {loading ? <img src={LoadingGIF} alt='loading-gif' /> : null}
-      {result ? (
-        <div>
-          <p>Brand: {result.brand}</p>
-          <p>Model: {result.model}</p>
-          <p>Batch Number: {result.batch}</p>
-          <p>Serial Number: {result.serialnumber}</p>
-          <p>Expiry Date: {result.expirydate}</p>
-          <p>Diopter: {result.diopter}</p>
-        </div>
-      ) : null}
-      {error ? (
-        <div>
-          <p>Failed OCR, please retry.</p>
-        </div>
-      ) : null}
-    </>
+    <Card className='card-style'>
+      <Card.Header>OCR Output</Card.Header>
+      <Card.Body>
+        {loading ? (
+          <img className='gif-style' src={LoadingGIF} alt='loading-gif' />
+        ) : null}
+        {result ? (
+          <>
+            <Card.Title>Result</Card.Title>
+            <p>
+              <strong>Brand:</strong> {result.brand}
+            </p>
+            <p>
+              <strong>Model:</strong> {result.model}
+            </p>
+            <p>
+              <strong>Batch Number:</strong> {result.batch}
+            </p>
+            <p>
+              <strong>Serial Number:</strong> {result.serialnumber}
+            </p>
+            <p>
+              <strong>Expiry Date:</strong> {result.expirydate}
+            </p>
+            <p>
+              <strong>Diopter:</strong> {result.diopter}
+            </p>
+
+            <i>Information has been updated in the Google Sheets</i>
+          </>
+        ) : null}
+        {error ? (
+          <div>
+            <p>
+              <strong>Failed OCR</strong>, please retake the image and make sure
+              that the image is leveled.
+            </p>
+          </div>
+        ) : null}
+      </Card.Body>
+    </Card>
   );
 };
 

@@ -1,16 +1,20 @@
 from flask import Flask, request, abort
 from flask_restful import Api, Resource
+from flask_cors import CORS, cross_origin
 from ocr import main_ocr
 import numpy as np
 
 app = Flask(__name__)
+cors = CORS(app)
 api = Api(app)
+app.config['CORS_HEADERS'] = 'Content-Type'
 
 @app.route('/')
 def api_root():
   return 'Root'
 
 @app.route('/ocr', methods = ['POST'])
+@cross_origin()
 def api_ocr():
   files = request.files
   file1 = files.get('image1')
@@ -22,8 +26,7 @@ def api_ocr():
   if (x):
     return x
   else:
-    # return {'message': 'Failed to OCR, please retake the image.'}
-    abort(404, description="Failed to OCR, please retake the image.")
+    abort(400, description="Failed to OCR, please retake the image.")
 
 if __name__ == "__main__":
   app.run(debug=True)

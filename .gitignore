@@ -7,6 +7,7 @@ frontend/.pnp.js
 frontend/coverage
 frontend/build
 frontend/.DS_Store
+frontend/.env
 frontend/.env.local
 frontend/.env.development.local
 frontend/.env.test.local

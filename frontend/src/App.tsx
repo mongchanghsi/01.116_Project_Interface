@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import './App.css';
+import NavigationBar from './components/layout/Navigation';
 import InputBody from './components/InputBody';
 import DisplayResult from './components/DisplayResult';
+import { Container, Row, Col } from 'react-bootstrap';
 
 const App: React.FC = () => {
   const [loading, setLoading] = useState<boolean>(false);
@@ -10,12 +12,21 @@ const App: React.FC = () => {
 
   return (
     <div className='App'>
-      <InputBody
-        setResult={setResult}
-        setLoading={setLoading}
-        setError={setError}
-      />
-      <DisplayResult result={result} loading={loading} error={error} />
+      <NavigationBar />
+      <Container>
+        <Row>
+          <Col>
+            <InputBody
+              setResult={setResult}
+              setLoading={setLoading}
+              setError={setError}
+            />
+          </Col>
+          <Col>
+            <DisplayResult result={result} loading={loading} error={error} />
+          </Col>
+        </Row>
+      </Container>
     </div>
   );
 };
