@@ -2,11 +2,20 @@ import React from 'react';
 import LoadingGIF from '../assets/gif/loading.gif';
 import { Card } from 'react-bootstrap';
 
+interface IResult {
+  brand: string;
+  model: string;
+  batch: string;
+  serialnumber: string;
+  expirydate: string;
+  diopter: string;
+}
+
 interface IProps {
   children?: React.ReactNode;
-  result: any;
-  loading: any;
-  error: any;
+  result: IResult | null;
+  loading: boolean;
+  error: boolean;
 }
 
 const DisplayResult: React.FC<IProps> = ({ result, loading, error }) => {
@@ -21,22 +30,28 @@ const DisplayResult: React.FC<IProps> = ({ result, loading, error }) => {
           <>
             <Card.Title>Result</Card.Title>
             <p>
-              <strong>Brand:</strong> {result.brand}
+              <strong>Brand: </strong>
+              {result.brand}
             </p>
             <p>
-              <strong>Model:</strong> {result.model}
+              <strong>Model: </strong>
+              {result.model}
             </p>
             <p>
-              <strong>Batch Number:</strong> {result.batch}
+              <strong>Batch Number: </strong>
+              {result.batch}
             </p>
             <p>
-              <strong>Serial Number:</strong> {result.serialnumber}
+              <strong>Serial Number: </strong>
+              {result.serialnumber}
             </p>
             <p>
-              <strong>Expiry Date:</strong> {result.expirydate}
+              <strong>Expiry Date: </strong>
+              {result.expirydate}
             </p>
             <p>
-              <strong>Diopter:</strong> {result.diopter}
+              <strong>Diopter: </strong>
+              {result.diopter}
             </p>
 
             <i>Information has been updated in the Google Sheets</i>

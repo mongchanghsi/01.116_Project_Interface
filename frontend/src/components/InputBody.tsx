@@ -4,9 +4,9 @@ import './InputBody.css';
 
 interface IProps {
   children?: React.ReactNode;
-  setResult: any;
-  setLoading: any;
-  setError: any;
+  setResult: (result: any) => void;
+  setLoading: (load: boolean) => void;
+  setError: (error: boolean) => void;
 }
 
 type IFile = File | undefined;
@@ -24,7 +24,7 @@ const InputBody: React.FC<IProps> = ({ setResult, setLoading, setError }) => {
     setLoading(true);
     setResult(null);
     setError(false);
-    let formData = new FormData();
+    let formData: FormData = new FormData();
 
     formData.append('image1', image1);
     formData.append('image2', image2);
