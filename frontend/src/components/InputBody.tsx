@@ -9,9 +9,11 @@ interface IProps {
   setError: any;
 }
 
+type IFile = File | undefined;
+
 const InputBody: React.FC<IProps> = ({ setResult, setLoading, setError }) => {
-  const [image1, setImage1] = useState<any>();
-  const [image2, setImage2] = useState<any>();
+  const [image1, setImage1] = useState<IFile>();
+  const [image2, setImage2] = useState<IFile>();
   const [missingFile, setMissingFile] = useState<boolean>(false);
 
   const sendForOCR = async () => {
