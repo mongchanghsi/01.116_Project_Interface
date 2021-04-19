@@ -58,9 +58,12 @@ const InputBody: React.FC<IProps> = ({ setResult, setLoading, setError }) => {
             alt='image1'
           />
         ) : (
-          <p>Please upload a top image of the IOL box</p>
+          <label htmlFor='file-uploader1'>
+            Please upload a top image of the IOL box
+          </label>
         )}
         <input
+          id='file-uploader1'
           type='file'
           name='image1'
           accept='image/png, image/jpeg, image/jpg'
@@ -81,18 +84,23 @@ const InputBody: React.FC<IProps> = ({ setResult, setLoading, setError }) => {
             alt='image2'
           />
         ) : (
-          <p>Please upload a back image of the IOL box</p>
+          <label htmlFor='file-uploader2'>
+            Please upload a back image of the IOL box
+          </label>
         )}
-        <input
-          type='file'
-          name='image2'
-          accept='image/png, image/jpeg, image/jpg'
-          onChange={(e) => {
-            if (e.target.files) {
-              setImage2(e.target.files[0]);
-            }
-          }}
-        />
+        <div>
+          <input
+            id='file-uploader2'
+            type='file'
+            name='image2'
+            accept='image/png, image/jpeg, image/jpg'
+            onChange={(e) => {
+              if (e.target.files) {
+                setImage2(e.target.files[0]);
+              }
+            }}
+          />
+        </div>
       </Card.Body>
 
       {missingFile ? (
