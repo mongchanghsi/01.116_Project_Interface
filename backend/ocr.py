@@ -155,8 +155,6 @@ def combineData(metadata_GB, metadata_GBT):
           metadata_final[i] = metadata_GBT[i]
       elif i == 'serialnumber':
         metadata_final[i] = metadata_GB[i]
-      elif i == 'expirydate':
-        pass
   return metadata_final
 
 def updateSheets(metadata_final):
@@ -206,7 +204,7 @@ def main_ocr(image1, image2):
   metadata_GB = dataExtraction(metadata_GB, info_GB)
   metadata_GBT = dataExtraction(metadata_GBT, info_GBT)
 
-  print('Gaussian Blur only:', metadata_GB)
+  print('Median Blur only:', metadata_GB)
   print('Gaussian Blur + Threshold:', metadata_GBT)
 
   metadata_final = combineData(metadata_GB, metadata_GBT)
