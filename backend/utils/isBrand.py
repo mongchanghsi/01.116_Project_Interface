@@ -1,6 +1,6 @@
 brand_GT = ['TECNIS', 'Sensar', 'AcrySof']
 brands = ['TECNIS', 'SENSAR', 'ACRYSOF', 'ALCON']
-# need to implement similarity score
+
 def isBrand(x):
   x = x.upper()
   if x not in brands:
@@ -20,7 +20,6 @@ def brandSimilarity(x):
     if highest_score > 36.0:
       return most_similar_brand, highest_score
   return '', 0
-    # print(f'{x} and {most_similar_brand}')
     
 def similarityFunction(word1, word2):
   # word1 is the OCR

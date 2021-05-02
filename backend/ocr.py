@@ -65,7 +65,6 @@ def dataExtraction(metadata, info):
   if metadata['brand'] == 'ALCON': metadata['brand'] = 'ACRYSOF'
 
   # If brand is still not detected after similarity score, search for model -> brand
-  # May need to do similarity score
   if metadata['brand'] == '':
     for i in info:
       _brand, _model = modelFindBrand(i)
@@ -85,7 +84,7 @@ def dataExtraction(metadata, info):
     if metadata['model'] == '':
       similarity_model_score = {}
       for i in info:
-        if i.isalnum() and i.isalpha() == False and i.isdigit() == False and len(i) > 4 and len(i) < 12:
+        if i.isalnum() and len(i) > 4 and len(i) < 12:
           most_similar_model, score = modelSimilarity(i, metadata['brand'])
           if score > 0:
             if most_similar_model in similarity_model_score.keys():
@@ -118,10 +117,6 @@ def dataExtraction(metadata, info):
         batch_name = (max(similarity_batch_score, key=similarity_batch_score.get))
         autocorrect_batch_name = metadata['model'] + batch_name[len(metadata['model']):]
         metadata['batch'] = autocorrect_batch_name
-        # if (checkSerialSize(autocorrect_batch_name, metadata['brand']) == False):
-        #   metadata['batch'] = autocorrect_batch_name + '0'
-        # else:
-        #   metadata['batch'] = autocorrect_batch_name
 
   # If serial number is still not detected, perform a secondary check if the serial number has been broken up into two
   if metadata['serialnumber'] == '':
@@ -176,8 +171,6 @@ def updateSheets(metadata_final):
 def main_ocr(image1, image2):
   image1 = cv2.imdecode(image1, cv2.IMREAD_COLOR)
   image2 = cv2.imdecode(image2, cv2.IMREAD_COLOR)
-  # image1 = cv2.imread(image1)
-  # image2 = cv2.imread(image2)
 
   gray1 = cv2.cvtColor(image1, cv2.COLOR_BGR2GRAY)
   gray2 = cv2.cvtColor(image2, cv2.COLOR_BGR2GRAY)
